@@ -1,0 +1,33 @@
+
+# List all customers
+GET http://0.0.0.0:3000/api/v1/customers 
+content-type: application/json
+x-auth-token: abc
+
+###
+
+# get a customer by ID
+GET http://0.0.0.0:3000/api/v1/customers/1
+content-type: application/json
+x-auth-token: abc
+
+###
+
+# find a customer by name
+GET http://0.0.0.0:3000/api/v1/customers?name=john
+content-type: application/json
+x-auth-token: abc
+
+###
+
+GET http://0.0.0.0:3000/api/v2/customers 
+content-type: application/json
+x-auth-token: abc
+
+###
+GET http://0.0.0.0:3000/oapi/v1/customers 
+content-type: application/json
+
+###
+GET http://0.0.0.0:3000/oapi/v2/customers 
+content-type: application/json
