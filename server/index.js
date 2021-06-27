@@ -1,4 +1,5 @@
 const Fastify = require('fastify');
+const MongoDB = require('../db/mongodb');
  
 const routes = require('./routes');
 
@@ -11,8 +12,11 @@ function Server() {
 
 // Class Server Method Init
 Server.prototype.init = function() {
+
+  const mongoDB = new MongoDB(process.env.MONGO_DB_URL);
+  
   const ctx = {
-    mongoDB: { url: 'mongodb' }
+    mongoDbConn: mongoDB.init()
   };
   // assign routes to Fastify service
   routes(this.fastify, ctx);
