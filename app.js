@@ -1,6 +1,5 @@
-require('dotenv-flow').config();
-
 const Server = require('./server');
+
 
 const server = new Server();
 
