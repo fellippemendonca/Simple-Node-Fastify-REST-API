@@ -1,26 +1,5 @@
 const auth = require('../middleware/auth');
-const controllers = require('../controllers');
-
-
-const v1Customers = controllers.v1.customers;
-const v1Departments = controllers.v1.departments;
-
-
-// V1 endpoints context
-function v1(ctx) {
-  return async (fastify) => {
-    fastify.get('/customers', v1Customers.findCustomers(ctx));
-    fastify.get('/customers/:id', v1Customers.findCustomers(ctx));
-
-    fastify.get('/departments', v1Departments.getDepartments(ctx));
-    fastify.get('/departments/:id', v1Departments.getDepartmentsById(ctx));
-    fastify.put('/departments', v1Departments.putDepartments(ctx));
-    fastify.post('/departments', v1Departments.postDepartments(ctx));
-    fastify.patch('/departments', v1Departments.patchDepartments(ctx));
-    fastify.patch('/departments/:id/place/:place', v1Departments.patchDepartmentsAddFields(ctx));
-    fastify.delete('/departments/:id', v1Departments.deleteDepartments(ctx));
-  };
-};
+const v1 = require('./v1');
 
 // Internal-API context
 function api(ctx) {

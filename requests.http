@@ -24,3 +24,10 @@ x-auth-token: abc
 GET http://0.0.0.0:3000/api/v1/departments 
 content-type: application/json
 x-auth-token: abc
+
+###
+
+# find department by ID
+GET http://0.0.0.0:3000/api/v1/departments/60cdc9d4b21b0ded79e671e1
+content-type: application/json
+x-auth-token: abc
