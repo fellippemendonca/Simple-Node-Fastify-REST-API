@@ -1,8 +1,6 @@
-require('dotenv-flow').config();
-
 const Fastify = require('fastify');
 
-
+const config = require('../config');
 const MongoDB = require('../db/mongodb'); 
 const routes = require('./routes');
 
@@ -17,7 +15,7 @@ function Server() {
 // Class Server Method Init
 Server.prototype.init = function() {
 
-  const mongoDB = new MongoDB(process.env.MONGO_DB_URL);
+  const mongoDB = new MongoDB(config.MONGO_DB_URL);
   this.ctx = {
     mongoDbConn: mongoDB.init()
   };
@@ -29,9 +27,9 @@ Server.prototype.init = function() {
 }
 
 // Class Server Method Listen
-Server.prototype.listen = async function(port = process.env.PORT || 3000, host = '0.0.0.0') {
+Server.prototype.listen = async function(port = config.PORT, host = config.HOST) {
 
-  // Start Fastify service listening on port .env NUMBER
+  // Start Fastify service listener
   try {
     await this.app.listen(port, host);
   } catch (error) {
